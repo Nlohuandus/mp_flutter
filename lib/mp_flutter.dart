@@ -7,6 +7,7 @@ export 'src/models/mercado_object.dart';
 export 'src/models/card/card.dart';
 export 'src/models/card/card_holder.dart';
 export 'src/models/card/identification.dart';
+export 'src/models/identification_types.dart';
 
 // core
 export 'src/api/api_response.dart';

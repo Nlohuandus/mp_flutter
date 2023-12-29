@@ -1,4 +1,5 @@
 import 'package:mp_flutter/mp_flutter.dart';
+import 'package:mp_flutter/src/models/identification_types.dart';
 
 class Services {
   final RestService _restService = RestService();
@@ -10,11 +11,13 @@ class Services {
 
   /// This function gets a list of identification types available
   /// on MercadoPago
-  Future<MercadoObject> documentTypes() async {
+  Future<List<IdentificationTypes>> documentTypes() async {
     final result = await _restService.get(
-        path: '/v1/identification_types', accessToken: accessToken as String);
+        path: 'v1/identification_types', accessToken: accessToken as String);
 
-    return _apiResponse.response(result);
+    return (result as List)
+        .map((x) => IdentificationTypes.fromJson(x))
+        .toList();
   }
 
   /// This function generates a new card token.
